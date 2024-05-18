@@ -28,7 +28,7 @@ reservAI is a wait list management system designed to reduce wait times at busy 
 
 1. **Clone the repository**
     ```bash
-    git clone <YOUR_GITHUB_REPO_URL>
+    git clone https://github.com/tarun010/reservAI
     cd reservAI
     ```
 

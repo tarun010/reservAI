@@ -1,5 +1,5 @@
-from flask import render_template, request, jsonify
-from app import app
+from flask import render_template, request, jsonify, current_app as app
+from .ai import predict_wait_time
 from app.ai import predict_wait_time
 
 @app.route('/')
