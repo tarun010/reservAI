@@ -62,23 +62,23 @@ reservAI is a wait list management system designed to reduce wait times at busy 
 - Use the chatbot for assistance and inquiries about wait times.
 
 ## Project Structure
-reservAI/
-│
-├── app/
-│   ├── __init__.py
-│   ├── templates/
-│   │   └── index.html
-│   ├── static/
-│   │   ├── css/
-│   │   │   └── style.css
-│   ├── routes.py
-│   ├── models.py
-│   └── ai.py
-│
-├── venv/
-├── config.py
-├── requirements.txt
-└── run.py
+reservAI/ \
+│ \
+├── app/ \
+│   ├── __init__.py \
+│   ├── templates/ \
+│   │   └── index.html \
+│   ├── static/ \
+│   │   ├── css/ \
+│   │   │   └── style.css \
+│   ├── routes.py \
+│   ├── models.py \
+│   └── ai.py \
+│ \
+├── venv/ \
+├── config.py \
+├── requirements.txt \
+└── run.py \
 
 
 
