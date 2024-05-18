@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reservAI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Welcome to reservAI</h1>
+    <p>Reduce Wait Times, Enhance Experience</p>
+    <form id="predictForm">
+        <input type="number" id="data" placeholder="Enter a value">
+        <button type="submit">Predict Wait Time</button>
+    </form>
+    <p id="predictionResult"></p>
+    <script>
+        document.getElementById('predictForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const data = document.getElementById('data').value;
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ data: parseInt(data) }),
+            })
+            .then(response => response.json())
+            .then(result => {
+                document.getElementById('predictionResult').innerText = `Predicted Wait Time: ${result.prediction}`;
+            });
+        });
+    </script>
+</body>
+</html>
