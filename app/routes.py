@@ -26,8 +26,11 @@ def checkin():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.json.get('num_people')
-    prediction = predict_wait_time(data)
+    num_people = request.json.get('num_people')
+    time_of_day = request.json.get('time_of_day')
+    day_of_week = request.json.get('day_of_week')
+    
+    prediction = predict_wait_time(num_people, time_of_day, day_of_week)
     return jsonify({'prediction': prediction})
 
 @app.route('/notify', methods=['POST'])
