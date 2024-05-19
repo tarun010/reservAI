@@ -1,6 +1,6 @@
-# reservAI
+# wAItless
 
-reservAI is a wait list management system designed to reduce wait times at busy locations such as restaurants, hospitals, museums, and labs. This application leverages AI to predict wait times, optimize resource allocation, and enhance user experience.
+wAItless is a wait list management system designed to reduce wait times at busy locations such as hospitals, restaurants, museums, and labs. This application leverages AI to predict wait times, optimize resource allocation, and enhance user experience.
 
 
 ## Demo
