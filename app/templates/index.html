@@ -28,7 +28,7 @@
         <input type="number" id="time_of_day" name="time_of_day" min="0" max="23" required>
         <label for="day_of_week">Day of the Week (1-7):</label>
         <input type="number" id="day_of_week" name="day_of_week" min="1" max="7" required>
-        <button type="submit">Predict Wait Time</button>
+        <button type="submit">Estimate Wait Time</button>
     </form>
     <p id="predictionResult"></p>
 
@@ -64,7 +64,7 @@
             })
             .then(response => response.json())
             .then(result => {
-                document.getElementById('predictionResult').innerText = `Predicted Wait Time: ${result.prediction} minutes`;
+                document.getElementById('predictionResult').innerText = `Estimated Wait Time: ${result.prediction} minutes`;
             });
         });
     </script>
