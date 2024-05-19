@@ -3,31 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>reservAI</title>
+    <title>wAItless</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Welcome to reservAI</h1>
+    <h1>Welcome to wAItless</h1>
     <p>Reduce Wait Times, Enhance Experience</p>
+    <form id="checkinForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="phone_number">Phone Number:</label>
+        <input type="tel" id="phone_number" name="phone_number" required>
+        <button type="submit">Check In</button>
+    </form>
+    <p id="ticketResult"></p>
+
     <form id="predictForm">
-        <input type="number" id="data" placeholder="Enter a value">
+        <label for="num_people">Number of People:</label>
+        <input type="number" id="num_people" name="num_people" min="1" required>
+        <label for="time_of_day">Time of Day (24-hour format):</label>
+        <input type="number" id="time_of_day" name="time_of_day" min="0" max="23" required>
+        <label for="day_of_week">Day of the Week (1-7):</label>
+        <input type="number" id="day_of_week" name="day_of_week" min="1" max="7" required>
         <button type="submit">Predict Wait Time</button>
     </form>
     <p id="predictionResult"></p>
+
     <script>
+        document.getElementById('checkinForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            fetch('/checkin', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(result => {
+                document.getElementById('ticketResult').innerText = `Your ticket number is: ${result.ticket_number}`;
+            });
+        });
+
         document.getElementById('predictForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const data = document.getElementById('data').value;
+            const num_people = document.getElementById('num_people').value;
+            const time_of_day = document.getElementById('time_of_day').value;
+            const day_of_week = document.getElementById('day_of_week').value;
             fetch('/predict', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ data: parseInt(data) }),
+                body: JSON.stringify({
+                    num_people: parseInt(num_people),
+                    time_of_day: parseInt(time_of_day),
+                    day_of_week: parseInt(day_of_week)
+                }),
             })
             .then(response => response.json())
             .then(result => {
-                document.getElementById('predictionResult').innerText = `Predicted Wait Time: ${result.prediction}`;
+                document.getElementById('predictionResult').innerText = `Predicted Wait Time: ${result.prediction} minutes`;
             });
         });
     </script>
