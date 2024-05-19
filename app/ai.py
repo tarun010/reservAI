@@ -1,45 +1,49 @@
-import numpy as np
 import pandas as pd
-from sklearn.linear_model import LinearRegression
+import numpy as np
 from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 
-# Example: Function to prepare data
-def prepare_data():
-    # Dummy data: Replace with actual historical data
-    data = {
-        'num_people': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        'time_of_day': [9, 10, 11, 12, 13, 14, 15, 16, 17, 18],  # e.g., 9 AM to 6 PM
-        'day_of_week': [1, 2, 3, 4, 5, 6, 7, 1, 2, 3],  # e.g., Monday to Sunday
-        'wait_time': [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]  # Dummy wait times
-    }
-    df = pd.DataFrame(data)
+def load_and_preprocess_data(file_path):
+    # Load the dummy dataset
+    df = pd.read_csv(file_path)
     
-    # Features and target variable
-    X = df[['num_people', 'time_of_day', 'day_of_week']]
-    y = df['wait_time']
+    # Convert columns to appropriate data types
+    df['num_patients'] = df['num_patients'].astype(int)
+    df['time_of_day'] = df['time_of_day'].astype(int)
+    df['day_of_week'] = df['day_of_week'].astype(int)
+    df['wait_time'] = df['wait_time'].astype(float)
     
-    return X, y
+    return df
 
-# Function to train the model
-def train_model():
-    X, y = prepare_data()
-    
+def train_model(df):
+    # Features and target variable
+    X = df[['num_patients', 'time_of_day', 'day_of_week']]
+    y = df['wait_time']
+
+    # Split data into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    
+
+    # Train the model
     model = LinearRegression()
     model.fit(X_train, y_train)
-    
+
+    # Evaluate the model
     y_pred = model.predict(X_test)
     mse = mean_squared_error(y_test, y_pred)
-    print(f"Model trained. Mean Squared Error: {mse}")
-    
+    print(f'Model trained. Mean Squared Error: {mse}')
+
     return model
 
-# Train the model and save it globally
-model = train_model()
+# Load and preprocess data
+file_path = 'data/dummy_data.csv'
+df = load_and_preprocess_data(file_path)
 
-# Function to predict wait time
-def predict_wait_time(num_people, time_of_day, day_of_week):
-    prediction = model.predict(np.array([[num_people, time_of_day, day_of_week]]))
+# Train the model
+model = train_model(df)
+
+def predict_wait_time(num_patients, time_of_day, day_of_week):
+    # Ensure inputs are in the correct format
+    X_new = np.array([[num_patients, time_of_day, day_of_week]])
+    prediction = model.predict(X_new)
     return prediction[0]
