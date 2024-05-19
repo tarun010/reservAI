@@ -2,6 +2,11 @@
 
 reservAI is a wait list management system designed to reduce wait times at busy locations such as restaurants, hospitals, museums, and labs. This application leverages AI to predict wait times, optimize resource allocation, and enhance user experience.
 
+
+## Demo
+[!<img width="1191" alt="wAItless-demo" src="https://github.com/tarun010/reservAI/assets/25506296/1caaf7c1-39d6-4c50-b089-3b067a2c408d">](https://youtu.be/lq9U7crYBlc?si=kOqMGutwTaXAOlAy)
+
+
 ## Table of Contents
 - [Features](#features)
 - [Installation](#installation)
