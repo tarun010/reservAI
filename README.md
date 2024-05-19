@@ -3,8 +3,11 @@
 wAItless is a wait list management system designed to reduce wait times at busy locations such as hospitals, restaurants, museums, and labs. This application leverages AI to predict wait times, optimize resource allocation, and enhance user experience.
 
 
-## Demo
+## Demo 1 - Input customer details, Predict Wait Time
 [<img width="1191" alt="wAItless-demo" src="https://github.com/tarun010/reservAI/assets/25506296/1caaf7c1-39d6-4c50-b089-3b067a2c408d">](https://youtu.be/lq9U7crYBlc?si=kOqMGutwTaXAOlAy)
+
+## Demo 2 - Get customer data from Client, Predict Wait Time
+[<img width="1191" alt="Screenshot 2024-05-19 at 14 06 50" src="https://github.com/tarun010/reservAI/assets/25506296/3f7e5c01-dc9c-43ca-abb0-95cdef6f9846">](https://youtu.be/7SjWcDdM9F0?si=l2ojn8HvJgg9x4G1)
 
 
 ## Table of Contents
